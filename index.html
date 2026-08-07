@@ -1,12 +1,720 @@
-<!DOCTYPE html>
-<html lang='en'>
+from pathlib import Path
+
+html = r'''<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="UTF=8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Github Page</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Sungwoo Park | Air Transportation & UAV Traffic Management</title>
+  <meta
+    name="description"
+    content="Academic homepage of Sungwoo Park. Research interests include UAV traffic management, decentralized traffic management, optimization, and autonomous air mobility."
+  />
+
+  <style>
+    :root {
+      --bg: #ffffff;
+      --text: #222222;
+      --muted: #666666;
+      --line: #e7e7e7;
+      --accent: #1f5a91;
+      --accent-dark: #163f66;
+      --soft: #f7f9fb;
+      --max-width: 960px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family:
+        -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+        Helvetica, Arial, "Noto Sans", sans-serif;
+      font-size: 16px;
+      line-height: 1.65;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: var(--accent-dark);
+      text-decoration: underline;
+    }
+
+    .container {
+      width: min(calc(100% - 36px), var(--max-width));
+      margin: 0 auto;
+    }
+
+    /* ---------------- NAV ---------------- */
+
+    .topbar {
+      border-bottom: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.96);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(8px);
+    }
+
+    .nav {
+      min-height: 58px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .nav-name {
+      color: var(--text);
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      font-size: 0.94rem;
+    }
+
+    .nav-links a {
+      color: #444;
+    }
+
+    /* ---------------- PROFILE ---------------- */
+
+    .profile {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 38px;
+      align-items: start;
+      padding: 62px 0 42px;
+    }
+
+    .profile-photo {
+      width: 180px;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 5px;
+      border: 1px solid var(--line);
+      background: var(--soft);
+    }
+
+    .profile h1 {
+      margin: 0 0 5px;
+      font-size: 2.35rem;
+      line-height: 1.2;
+      letter-spacing: -0.035em;
+    }
+
+    .position {
+      margin: 0 0 7px;
+      color: #444;
+      font-size: 1.05rem;
+    }
+
+    .affiliation {
+      margin: 0 0 13px;
+      color: var(--muted);
+    }
+
+    .contact {
+      margin: 0 0 18px;
+      font-size: 0.96rem;
+    }
+
+    .intro p {
+      margin: 0 0 13px;
+    }
+
+    .social-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-top: 20px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 36px;
+      padding: 6px 12px;
+      border: 1px solid #cfd8e1;
+      border-radius: 5px;
+      background: #fff;
+      color: var(--accent);
+      font-size: 0.9rem;
+      font-weight: 600;
+      transition: 0.15s ease;
+    }
+
+    .button:hover {
+      background: var(--soft);
+      border-color: #aebdca;
+      text-decoration: none;
+    }
+
+    /* ---------------- SECTIONS ---------------- */
+
+    section {
+      padding: 30px 0;
+    }
+
+    section + section {
+      border-top: 1px solid var(--line);
+    }
+
+    .section-title {
+      margin: 0 0 24px;
+      font-size: 1.55rem;
+      line-height: 1.3;
+      letter-spacing: -0.025em;
+      text-transform: lowercase;
+    }
+
+    .section-subtitle {
+      margin: -15px 0 25px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    /* ---------------- RESEARCH ---------------- */
+
+    .research-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px 28px;
+      margin: 0;
+      padding-left: 20px;
+    }
+
+    .research-list li {
+      padding-left: 3px;
+    }
+
+    /* ---------------- PUBLICATIONS ---------------- */
+
+    .publication {
+      display: grid;
+      grid-template-columns: 185px 1fr;
+      gap: 24px;
+      padding: 4px 0 34px;
+    }
+
+    .publication + .publication {
+      padding-top: 28px;
+      border-top: 1px dashed #dedede;
+    }
+
+    .pub-image {
+      width: 185px;
+      height: 125px;
+      object-fit: cover;
+      background: var(--soft);
+      border: 1px solid var(--line);
+      border-radius: 4px;
+    }
+
+    .pub-title {
+      margin: -2px 0 6px;
+      font-size: 1.08rem;
+      line-height: 1.45;
+      font-weight: 700;
+    }
+
+    .pub-authors {
+      margin: 0 0 5px;
+    }
+
+    .pub-venue {
+      margin: 0 0 9px;
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    .me {
+      font-weight: 700;
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 2px;
+    }
+
+    .pub-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 9px;
+      font-size: 0.92rem;
+      font-weight: 600;
+    }
+
+    .abstract-button {
+      padding: 0;
+      border: 0;
+      background: none;
+      color: var(--accent);
+      font: inherit;
+      font-size: 0.92rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .abstract-button:hover {
+      text-decoration: underline;
+    }
+
+    .abstract {
+      display: none;
+      margin-top: 11px;
+      padding: 13px 15px;
+      background: var(--soft);
+      border-left: 3px solid #cad8e5;
+      color: #4c4c4c;
+      font-size: 0.94rem;
+    }
+
+    .abstract.open {
+      display: block;
+    }
+
+    /* ---------------- TIMELINE ---------------- */
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 135px 1fr;
+      gap: 22px;
+      margin-bottom: 21px;
+    }
+
+    .timeline-date {
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    .timeline-content strong {
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .timeline-content p {
+      margin: 0;
+      color: #555;
+    }
+
+    /* ---------------- FOOTER ---------------- */
+
+    footer {
+      margin-top: 28px;
+      padding: 27px 0 38px;
+      border-top: 1px solid var(--line);
+      color: #888;
+      text-align: center;
+      font-size: 0.86rem;
+    }
+
+    /* ---------------- MOBILE ---------------- */
+
+    @media (max-width: 720px) {
+      .nav {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 8px;
+        padding: 13px 0;
+      }
+
+      .nav-links {
+        width: 100%;
+        gap: 14px;
+        overflow-x: auto;
+        white-space: nowrap;
+        padding-bottom: 2px;
+      }
+
+      .profile {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        padding-top: 40px;
+      }
+
+      .profile-photo {
+        width: 150px;
+        height: 185px;
+      }
+
+      .profile h1 {
+        font-size: 2rem;
+      }
+
+      .research-list {
+        grid-template-columns: 1fr;
+      }
+
+      .publication {
+        grid-template-columns: 1fr;
+      }
+
+      .pub-image {
+        width: min(100%, 360px);
+        height: 190px;
+      }
+
+      .timeline-item {
+        grid-template-columns: 1fr;
+        gap: 3px;
+      }
+    }
+  </style>
 </head>
+
 <body>
-  <h1>Welcome to My Website</h1>
-  <p>This is a simple website hosted on Github Pages.</p>
+
+  <!-- =========================================================
+       NAVIGATION
+       ========================================================= -->
+  <header class="topbar">
+    <div class="container nav">
+      <a href="#home" class="nav-name">Sungwoo Park</a>
+
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="#about">About</a>
+        <a href="#research">Research</a>
+        <a href="#publications">Publications</a>
+        <a href="#education">Education</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+
+  <main class="container" id="home">
+
+    <!-- =========================================================
+         PROFILE / ABOUT
+         Replace profile.jpg with your actual photo.
+         ========================================================= -->
+    <section class="profile" id="about">
+
+      <div>
+        <img
+          src="profile.jpg"
+          alt="Portrait of Sungwoo Park"
+          class="profile-photo"
+        />
+      </div>
+
+      <div class="intro">
+        <h1>Sungwoo Park</h1>
+
+        <p class="position">
+          M.S. Student, Advanced Air Transportation
+        </p>
+
+        <p class="affiliation">
+          Korea Aerospace University
+        </p>
+
+        <p class="contact">
+          sungwoo.park [at] example [dot] com
+        </p>
+
+        <p>
+          I am a master's student in Advanced Air Transportation at
+          Korea Aerospace University. My research focuses on traffic
+          management for unmanned aircraft systems, with particular
+          interests in decentralized decision-making, network design,
+          conflict management, and optimization.
+        </p>
+
+        <p>
+          I am interested in developing scalable and reliable traffic
+          management frameworks for future autonomous air transportation
+          systems. My current work explores how multiple service providers
+          can coordinate and negotiate while maintaining operational
+          efficiency and fairness.
+        </p>
+
+        <p>
+          More broadly, I am interested in UAV traffic management,
+          autonomous transportation systems, optimization, reinforcement
+          learning, and intelligent transportation systems.
+        </p>
+
+        <div class="social-links">
+          <!-- Replace # with your real URLs -->
+          <a class="button" href="#" target="_blank" rel="noopener">Google Scholar</a>
+          <a class="button" href="#" target="_blank" rel="noopener">GitHub</a>
+          <a class="button" href="#" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="button" href="cv.pdf" target="_blank">CV</a>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- =========================================================
+         RESEARCH INTERESTS
+         ========================================================= -->
+    <section id="research">
+      <h2 class="section-title">research interests</h2>
+
+      <ul class="research-list">
+        <li>Unmanned Aircraft System Traffic Management (UTM)</li>
+        <li>Decentralized Traffic Management</li>
+        <li>Multi-Agent Decision Making</li>
+        <li>Airspace and Transportation Network Design</li>
+        <li>Optimization and Operations Research</li>
+        <li>Reinforcement Learning for Transportation Systems</li>
+      </ul>
+    </section>
+
+
+    <!-- =========================================================
+         PUBLICATIONS
+         Add one .publication block for each paper.
+         ========================================================= -->
+    <section id="publications">
+      <h2 class="section-title">selected publications</h2>
+      <p class="section-subtitle">
+        Selected journal and conference publications.
+      </p>
+
+      <!-- Publication 1 -->
+      <article class="publication">
+        <img
+          src="publication1.jpg"
+          alt="Multilateral negotiation research"
+          class="pub-image"
+        />
+
+        <div>
+          <h3 class="pub-title">
+            Multilateral Negotiation Among Traffic Management Service Providers
+          </h3>
+
+          <p class="pub-authors">
+            <span class="me">Sungwoo Park</span>, Sang Hyun Kim
+          </p>
+
+          <p class="pub-venue">
+            AIAA AVIATION Forum, 2026
+          </p>
+
+          <div class="pub-links">
+            <button class="abstract-button" onclick="toggleAbstract('abs1', this)">
+              Abs
+            </button>
+
+            <!-- Replace # with paper / DOI / PDF URLs -->
+            <a href="#" target="_blank" rel="noopener">Paper</a>
+            <a href="#" target="_blank" rel="noopener">DOI</a>
+          </div>
+
+          <div class="abstract" id="abs1">
+            This study investigates decentralized negotiation among multiple
+            traffic management service providers in unmanned aircraft system
+            traffic management. The framework focuses on coordination among
+            independent service providers while considering operational
+            efficiency and fairness. Replace this paragraph with the official
+            abstract of your paper.
+          </div>
+        </div>
+      </article>
+
+
+      <!-- Publication 2: Template -->
+      <article class="publication">
+        <img
+          src="publication2.jpg"
+          alt="Research publication preview"
+          class="pub-image"
+        />
+
+        <div>
+          <h3 class="pub-title">
+            Your Second Paper Title
+          </h3>
+
+          <p class="pub-authors">
+            <span class="me">Sungwoo Park</span>, Coauthor Name
+          </p>
+
+          <p class="pub-venue">
+            Journal or Conference Name, 2026
+          </p>
+
+          <div class="pub-links">
+            <button class="abstract-button" onclick="toggleAbstract('abs2', this)">
+              Abs
+            </button>
+            <a href="#" target="_blank" rel="noopener">Paper</a>
+            <a href="#" target="_blank" rel="noopener">DOI</a>
+            <a href="#" target="_blank" rel="noopener">Code</a>
+          </div>
+
+          <div class="abstract" id="abs2">
+            Write the abstract here. You can copy this entire publication
+            block whenever you want to add another publication.
+          </div>
+        </div>
+      </article>
+
+
+      <!-- Publication 3: Template -->
+      <article class="publication">
+        <img
+          src="publication3.jpg"
+          alt="Research publication preview"
+          class="pub-image"
+        />
+
+        <div>
+          <h3 class="pub-title">
+            Your Third Paper Title
+          </h3>
+
+          <p class="pub-authors">
+            First Author, <span class="me">Sungwoo Park</span>, Third Author
+          </p>
+
+          <p class="pub-venue">
+            Journal or Conference Name, 2025
+          </p>
+
+          <div class="pub-links">
+            <button class="abstract-button" onclick="toggleAbstract('abs3', this)">
+              Abs
+            </button>
+            <a href="#" target="_blank" rel="noopener">Paper</a>
+          </div>
+
+          <div class="abstract" id="abs3">
+            Write the abstract here.
+          </div>
+        </div>
+      </article>
+    </section>
+
+
+    <!-- =========================================================
+         EDUCATION
+         ========================================================= -->
+    <section id="education">
+      <h2 class="section-title">education</h2>
+
+      <div class="timeline-item">
+        <div class="timeline-date">2024 – Present</div>
+
+        <div class="timeline-content">
+          <strong>M.S. in Advanced Air Transportation</strong>
+          <p>
+            Korea Aerospace University, Republic of Korea
+          </p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-date">20XX – 20XX</div>
+
+        <div class="timeline-content">
+          <strong>B.S. in [Your Major]</strong>
+          <p>
+            Korea Aerospace University, Republic of Korea
+          </p>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- =========================================================
+         EXPERIENCE / AWARDS
+         ========================================================= -->
+    <section id="experience">
+      <h2 class="section-title">experience & awards</h2>
+
+      <div class="timeline-item">
+        <div class="timeline-date">2026</div>
+
+        <div class="timeline-content">
+          <strong>AIAA AVIATION Forum</strong>
+          <p>
+            Presented research on multilateral negotiation among traffic
+            management service providers.
+          </p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-date">20XX</div>
+
+        <div class="timeline-content">
+          <strong>Award / Research Experience</strong>
+          <p>
+            Add a short description here.
+          </p>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- =========================================================
+         CONTACT
+         ========================================================= -->
+    <section id="contact">
+      <h2 class="section-title">contact</h2>
+
+      <p>
+        If you are interested in my research or would like to discuss
+        potential collaboration, please feel free to contact me.
+      </p>
+
+      <p>
+        <strong>Email:</strong>
+        sungwoo.park [at] example [dot] com
+      </p>
+    </section>
+
+  </main>
+
+
+  <footer>
+    <div class="container">
+      © <span id="year"></span> Sungwoo Park.
+      Hosted with GitHub Pages.
+    </div>
+  </footer>
+
+
+  <script>
+    function toggleAbstract(id, button) {
+      const abstract = document.getElementById(id);
+      const isOpen = abstract.classList.toggle("open");
+
+      button.textContent = isOpen ? "Hide Abs" : "Abs";
+    }
+
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+  </script>
+
 </body>
 </html>
+'''
+
+path = Path("/mnt/data/index.html")
+path.write_text(html, encoding="utf-8")
+print(f"Created: {path}")
+print(f"Characters: {len(html):,}")
