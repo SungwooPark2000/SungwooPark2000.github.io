@@ -228,6 +228,11 @@ a {
   stroke-width: 1.7;
 }
 
+.text-link svg.linkedin-icon {
+  fill: currentColor;
+  stroke: none;
+}
+
 .media-frame {
   position: relative;
   overflow: hidden;
