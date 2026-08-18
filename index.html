@@ -68,6 +68,28 @@
       grid-template-columns: 1fr;
     }
 
+    .publication-year {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin: 0 0 12px;
+      color: var(--muted);
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+
+    .publication-year::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: var(--line);
+    }
+
+    .publication-list + .publication-year {
+      margin-top: 30px;
+    }
+
     .project-category {
       margin: 0 0 20px;
       color: var(--accent);
@@ -272,7 +294,7 @@
           </div>
         </article>
 
-        <!-- <article class="project-card">
+        <article class="project-card">
           <figure class="project-media media-frame">
             <img src="assets/images/projects/obstacle-clearance.jpg" alt="Obstacle clearance assessment project" loading="lazy" data-fallback>
             <span class="image-placeholder" aria-hidden="true">Project image</span>
@@ -290,7 +312,7 @@
               <li>Safety assessment</li>
             </ul>
           </div>
-        </article> -->
+        </article>
       </div>
     </section>
 
@@ -304,6 +326,7 @@
       </div>
 
       <h3 class="publication-category">Journal Articles</h3>
+      <h4 class="publication-year">2026</h4>
       <div class="publication-list">
         <article class="publication-card">
           <div class="publication-copy">
@@ -325,6 +348,7 @@
       </div>
 
       <h3 class="publication-category">Conference Papers and Presentations</h3>
+      <h4 class="publication-year">2026</h4>
       <div class="publication-list">
         <article class="publication-card">
           <div class="publication-copy">
@@ -336,7 +360,10 @@
             </div>
           </div>
         </article>
+      </div>
 
+      <h4 class="publication-year">2025</h4>
+      <div class="publication-list">
         <article class="publication-card publication-card--compact">
           <div class="publication-copy">
             <h3>Analysis of Available Airspace for Drones in Airport Control Zone</h3>
@@ -347,7 +374,10 @@
             </div>
           </div>
         </article>
+      </div>
 
+      <h4 class="publication-year">2024</h4>
+      <div class="publication-list">
         <article class="publication-card publication-card--compact">
           <div class="publication-copy">
             <h3>Ground Risk Analysis for Urban Low Altitude Operations</h3>
