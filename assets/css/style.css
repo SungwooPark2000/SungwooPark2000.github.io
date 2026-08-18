@@ -149,9 +149,9 @@ a {
 
 .about {
   display: grid;
-  grid-template-columns: 220px minmax(0, 1fr);
+  grid-template-columns: 212px minmax(0, 1fr);
   gap: 48px;
-  align-items: stretch;
+  align-items: start;
   padding: 78px 0 62px;
 }
 
@@ -261,10 +261,11 @@ a {
 .profile-media {
   grid-column: 1;
   grid-row: 1;
-  width: 220px;
-  min-height: 275px;
-  margin-top: 28px;
-  align-self: stretch;
+  width: 212px;
+  height: auto;
+  min-height: 0;
+  margin-top: 42px;
+  align-self: start;
   border: 1px solid var(--line);
   border-radius: 4px;
   background: #ffffff;
@@ -272,8 +273,9 @@ a {
 }
 
 .profile-media img {
-  object-fit: contain;
-  object-position: center top;
+  width: 100%;
+  height: auto;
+  object-fit: initial;
 }
 
 .profile-placeholder {
@@ -526,8 +528,9 @@ a {
     grid-column: 1;
     grid-row: 1;
     width: 158px;
+    height: auto;
     min-height: 0;
-    aspect-ratio: 4 / 5;
+    aspect-ratio: auto;
     margin-top: 0;
     align-self: start;
   }
