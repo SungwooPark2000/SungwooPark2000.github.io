@@ -64,6 +64,22 @@
       margin-top: 44px;
     }
 
+    .publication-card {
+      grid-template-columns: 1fr;
+    }
+
+    .project-category {
+      margin: 0 0 20px;
+      color: var(--accent);
+      font-size: 1.15rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .project-grid + .project-category {
+      margin-top: 44px;
+    }
+
     @media (max-width: 760px) {
       .about {
         row-gap: 24px;
@@ -106,8 +122,8 @@
 
       <nav class="site-nav" id="site-navigation" aria-label="Main navigation">
         <a href="#about">about</a>
-        <a href="#publications">publications</a>
         <a href="#projects">projects</a>
+        <a href="#publications">publications</a>
         <a href="cv.pdf" target="_blank" rel="noopener">cv</a>
       </nav>
     </div>
@@ -161,102 +177,15 @@
       </div>
     </section>
 
-    <section class="content-section" id="publications" aria-labelledby="publications-title">
-      <div class="section-heading">
-        <div>
-          <p class="section-kicker">Research Output</p>
-          <h2 id="publications-title">Publications and Presentations</h2>
-        </div>
-        <a class="section-link" href="cv.pdf" target="_blank" rel="noopener">Full list in CV <span aria-hidden="true">↗</span></a>
-      </div>
-
-      <h3 class="publication-category">Journal Articles</h3>
-      <div class="publication-list">
-        <article class="publication-card">
-          <figure class="publication-media media-frame">
-            <img src="assets/images/publications/risk-based-airspace-capacity.jpg" alt="Preview for risk-based airspace capacity assessment research" loading="lazy" data-fallback>
-            <span class="image-placeholder" aria-hidden="true">Publication image</span>
-          </figure>
-          <div class="publication-copy">
-            <h3>Risk-Based Airspace Capacity Assessment for Small Unmanned Aircraft in Urban Environments</h3>
-            <p class="authors">S. Ji, <strong>Sungwoo Park</strong>, and S. H. Kim</p>
-            <p class="venue"><em>Transportation Research Part A: Policy and Practice</em>, under review, 2026.</p>
-            <div class="tag-row"><span class="status-tag">Under review</span></div>
-          </div>
-        </article>
-
-        <article class="publication-card">
-          <figure class="publication-media media-frame">
-            <img src="assets/images/publications/decentralized-utm.jpg" alt="Preview for decentralized UAS traffic management research" loading="lazy" data-fallback>
-            <span class="image-placeholder" aria-hidden="true">Publication image</span>
-          </figure>
-          <div class="publication-copy">
-            <h3>Game-Theoretic Approaches to Decentralized UAS Traffic Management</h3>
-            <p class="authors"><strong>Sungwoo Park</strong> and S. H. Kim</p>
-            <p class="venue"><em>IEEE Transactions on Intelligent Transportation Systems</em>, manuscript in preparation, 2026.</p>
-            <div class="tag-row"><span class="status-tag">In preparation</span></div>
-          </div>
-        </article>
-      </div>
-
-      <h3 class="publication-category">Conference Papers and Presentations</h3>
-      <div class="publication-list">
-
-        <article class="publication-card">
-          <figure class="publication-media media-frame">
-            <img src="assets/images/publications/multilateral-negotiation.jpg" alt="Preview for multilateral negotiation research" loading="lazy" data-fallback>
-            <span class="image-placeholder" aria-hidden="true">Publication image</span>
-          </figure>
-          <div class="publication-copy">
-            <h3>Multilateral Negotiation Among Traffic Management Service Providers</h3>
-            <p class="authors"><strong>Sungwoo Park</strong> and S. H. Kim</p>
-            <p class="venue"><em>AIAA AVIATION 2026 Forum</em>, 2026.</p>
-            <div class="publication-links">
-              <a href="https://arc.aiaa.org/doi/abs/10.2514/6.2026-4465" target="_blank" rel="noopener">Paper / DOI <span aria-hidden="true">↗</span></a>
-            </div>
-          </div>
-        </article>
-
-        <article class="publication-card publication-card--compact">
-          <figure class="publication-media media-frame">
-            <img src="assets/images/publications/airport-control-zone.jpg" alt="Preview for airport control zone airspace analysis" loading="lazy" data-fallback>
-            <span class="image-placeholder" aria-hidden="true">Publication image</span>
-          </figure>
-          <div class="publication-copy">
-            <h3>Analysis of Available Airspace for Drones in Airport Control Zone</h3>
-            <p class="authors">B. Kang, <strong>Sungwoo Park</strong>, and S. H. Kim</p>
-            <p class="venue"><em>KSAS 2025 Fall Conference</em>, 2025.</p>
-            <div class="publication-links">
-              <a href="https://www.dbpia.co.kr/journal/articleDetail?nodeId=NODE12589226" target="_blank" rel="noopener">Paper <span aria-hidden="true">↗</span></a>
-            </div>
-          </div>
-        </article>
-
-        <article class="publication-card publication-card--compact">
-          <figure class="publication-media media-frame">
-            <img src="assets/images/publications/ground-risk-analysis.jpg" alt="Preview for urban low-altitude ground-risk analysis" loading="lazy" data-fallback>
-            <span class="image-placeholder" aria-hidden="true">Publication image</span>
-          </figure>
-          <div class="publication-copy">
-            <h3>Ground Risk Analysis for Urban Low Altitude Operations</h3>
-            <p class="authors"><strong>Sungwoo Park</strong>, H. J. Jin, and S. H. Kim</p>
-            <p class="venue"><em>KSAS 2024 Spring Conference</em>, 2024.</p>
-            <div class="publication-links">
-              <a href="https://www.dbpia.co.kr/journal/articleDetail?nodeId=NODE11813909" target="_blank" rel="noopener">Paper <span aria-hidden="true">↗</span></a>
-            </div>
-          </div>
-        </article>
-      </div>
-    </section>
-
     <section class="content-section" id="projects" aria-labelledby="projects-title">
       <div class="section-heading">
         <div>
-          <p class="section-kicker">Current work</p>
-          <h2 id="projects-title">Research projects</h2>
+          <p class="section-kicker">Research Portfolio</p>
+          <h2 id="projects-title">Research Projects</h2>
         </div>
       </div>
 
+      <h3 class="project-category">Present Research</h3>
       <div class="project-grid">
         <article class="project-card">
           <figure class="project-media media-frame">
@@ -297,6 +226,136 @@
               <li>Network design</li>
               <li>Path planning</li>
             </ul>
+          </div>
+        </article>
+      </div>
+
+      <h3 class="project-category">Past Research</h3>
+      <div class="project-grid">
+        <article class="project-card">
+          <figure class="project-media media-frame">
+            <img src="assets/images/projects/air-risk-analysis.jpg" alt="Air risk analysis project" loading="lazy" data-fallback>
+            <span class="image-placeholder" aria-hidden="true">Project image</span>
+          </figure>
+          <div class="project-copy">
+            <p class="project-meta">Past Research</p>
+            <h3>Air Risk Analysis</h3>
+            <p>
+              Spatial air-risk assessment using ADS-B traffic data to identify
+              operational exposure patterns in airport airspace.
+            </p>
+            <ul class="project-tags" aria-label="Methods">
+              <li>ADS-B</li>
+              <li>GIS</li>
+              <li>Risk analysis</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <figure class="project-media media-frame">
+            <img src="assets/images/projects/ground-risk-analysis.jpg" alt="Ground risk analysis project" loading="lazy" data-fallback>
+            <span class="image-placeholder" aria-hidden="true">Project image</span>
+          </figure>
+          <div class="project-copy">
+            <p class="project-meta">Past Research</p>
+            <h3>Ground Risk Analysis</h3>
+            <p>
+              GIS-based assessment of population exposure and potential ground
+              consequences associated with low-altitude UAS operations in urban environments.
+            </p>
+            <ul class="project-tags" aria-label="Methods">
+              <li>GIS</li>
+              <li>Population data</li>
+              <li>Ground risk</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <figure class="project-media media-frame">
+            <img src="assets/images/projects/obstacle-clearance.jpg" alt="Obstacle clearance assessment project" loading="lazy" data-fallback>
+            <span class="image-placeholder" aria-hidden="true">Project image</span>
+          </figure>
+          <div class="project-copy">
+            <p class="project-meta">Past Research</p>
+            <h3>Obstacle Clearance Assessment</h3>
+            <p>
+              Assessment of obstacle limitation surfaces and clearance constraints
+              for UAM operations in airport environments.
+            </p>
+            <ul class="project-tags" aria-label="Methods">
+              <li>OLS</li>
+              <li>Airport airspace</li>
+              <li>Safety assessment</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="content-section" id="publications" aria-labelledby="publications-title">
+      <div class="section-heading">
+        <div>
+          <p class="section-kicker">Research Output</p>
+          <h2 id="publications-title">Publications and Presentations</h2>
+        </div>
+        <a class="section-link" href="cv.pdf" target="_blank" rel="noopener">Full list in CV <span aria-hidden="true">↗</span></a>
+      </div>
+
+      <h3 class="publication-category">Journal Articles</h3>
+      <div class="publication-list">
+        <article class="publication-card">
+          <div class="publication-copy">
+            <h3>Risk-Based Airspace Capacity Assessment for Small Unmanned Aircraft in Urban Environments</h3>
+            <p class="authors">S. Ji, <strong>Sungwoo Park</strong>, and S. H. Kim</p>
+            <p class="venue"><em>Transportation Research Part A: Policy and Practice</em>, under review, 2026.</p>
+            <div class="tag-row"><span class="status-tag">Under review</span></div>
+          </div>
+        </article>
+
+        <article class="publication-card">
+          <div class="publication-copy">
+            <h3>Game-Theoretic Approaches to Decentralized UAS Traffic Management</h3>
+            <p class="authors"><strong>Sungwoo Park</strong> and S. H. Kim</p>
+            <p class="venue"><em>IEEE Transactions on Intelligent Transportation Systems</em>, manuscript in preparation, 2026.</p>
+            <div class="tag-row"><span class="status-tag">In preparation</span></div>
+          </div>
+        </article>
+      </div>
+
+      <h3 class="publication-category">Conference Papers and Presentations</h3>
+      <div class="publication-list">
+        <article class="publication-card">
+          <div class="publication-copy">
+            <h3>Multilateral Negotiation Among Traffic Management Service Providers</h3>
+            <p class="authors"><strong>Sungwoo Park</strong> and S. H. Kim</p>
+            <p class="venue"><em>AIAA AVIATION 2026 Forum</em>, 2026.</p>
+            <div class="publication-links">
+              <a href="https://arc.aiaa.org/doi/abs/10.2514/6.2026-4465" target="_blank" rel="noopener">Paper / DOI <span aria-hidden="true">↗</span></a>
+            </div>
+          </div>
+        </article>
+
+        <article class="publication-card publication-card--compact">
+          <div class="publication-copy">
+            <h3>Analysis of Available Airspace for Drones in Airport Control Zone</h3>
+            <p class="authors">B. Kang, <strong>Sungwoo Park</strong>, and S. H. Kim</p>
+            <p class="venue"><em>KSAS 2025 Fall Conference</em>, 2025.</p>
+            <div class="publication-links">
+              <a href="https://www.dbpia.co.kr/journal/articleDetail?nodeId=NODE12589226" target="_blank" rel="noopener">Paper <span aria-hidden="true">↗</span></a>
+            </div>
+          </div>
+        </article>
+
+        <article class="publication-card publication-card--compact">
+          <div class="publication-copy">
+            <h3>Ground Risk Analysis for Urban Low Altitude Operations</h3>
+            <p class="authors"><strong>Sungwoo Park</strong>, H. J. Jin, and S. H. Kim</p>
+            <p class="venue"><em>KSAS 2024 Spring Conference</em>, 2024.</p>
+            <div class="publication-links">
+              <a href="https://www.dbpia.co.kr/journal/articleDetail?nodeId=NODE11813909" target="_blank" rel="noopener">Paper <span aria-hidden="true">↗</span></a>
+            </div>
           </div>
         </article>
       </div>
