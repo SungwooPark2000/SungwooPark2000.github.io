@@ -228,12 +228,12 @@ a {
   stroke-width: 1.7;
 }
 
-.text-link svg.linkedin-icon {
-  fill: currentColor;
+.text-link svg.linkedin-box-icon {
+  width: 17px;
+  height: 17px;
+  fill: none;
   stroke: none;
-  background: currentColor;
-  border-radius: 1px;
-  padding: 2px;
+  flex-shrink: 0;
 }
 
 .media-frame {
