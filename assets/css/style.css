@@ -148,8 +148,8 @@ a {
 
 .about {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 220px;
-  gap: 58px;
+  grid-template-columns: 220px minmax(0, 1fr);
+  gap: 48px;
   align-items: start;
   padding: 78px 0 62px;
 }
@@ -250,8 +250,11 @@ a {
 }
 
 .profile-media {
-  width: 280px;
+  grid-column: 1;
+  grid-row: 1;
+  width: 220px;
   aspect-ratio: 4 / 5;
+  margin-top: 31px;
   border: 1px solid var(--line);
   border-radius: 4px;
   box-shadow: var(--shadow);
@@ -498,11 +501,14 @@ a {
   }
 
   .profile-media {
+    grid-column: 1;
     grid-row: 1;
     width: 158px;
+    margin-top: 0;
   }
 
   .about-copy {
+    grid-column: 1;
     grid-row: 2;
   }
 
